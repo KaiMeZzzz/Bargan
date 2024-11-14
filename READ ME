@@ -1,0 +1,27 @@
+14.11.2024
+@startuml
+actor "Клиент" <<User>> as AEXPR
+actor "Администратор" <<User>> as AWF
+
+component "бронирование столиков" <<Application>> as CMD
+component "заказ блюд" <<Application>> as CQL
+component "номер столика" <<Application>> as CQR
+component "оплата" <<Application>> as QWE
+
+usecase (учёт клиентов) as UC3
+usecase (получение обратной связи) as UC5
+usecase (Количество человек на столик) as UC6
+usecase (Наличные) as UC7
+usecase (Безналичная оплата) as UC8
+
+AEXPR -right-> CMD
+AWF -left-> CMD
+CMD -down-> CQR
+CQL -left-> UC3
+CMD -up-> CQL
+UC6 -right-> CQR
+CQL -right-> QWE
+UC7 -down-> QWE
+UC8 -left-> QWE
+UC5 -down-> QWE
+@enduml
